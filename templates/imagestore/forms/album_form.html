@@ -1,0 +1,33 @@
+{% extends "imagestore/base.html" %}
+{% load i18n %}
+{% load thumbnail %}
+
+
+{% block title %}
+    {% trans "Create album" %}
+{% endblock %}
+
+{% block imagestore-breadcrumb %}
+    <li>
+        {% if object %}
+            {% trans "Edit album" %}: {{ object.name }}
+        {% else %}
+            {% trans "Create album" %}
+        {% endif %}
+    </li>
+{% endblock %}
+
+{% block content %}
+    <h1>
+        {% if object %}
+            {% trans "Edit album" %}: {{ object.name }}
+        {% else %}
+            {% trans "Create album" %}
+        {% endif %}
+    </h1>
+    <form action="." method="post" class='album-form'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="{% trans "Save" %}" class='btn success'>
+    </form>
+{% endblock content %}

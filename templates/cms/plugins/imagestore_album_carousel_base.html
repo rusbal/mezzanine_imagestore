@@ -1,0 +1,34 @@
+{% load thumbnail %}
+<section style="display: block;" id="works" class="section images">
+    <header class="header">
+        <h1 class="title">Images</h1>
+    </header> 
+    <div class="image-gallery works" data-gallery="" data-caption-to="#image-caption">
+        <div class='wrapper'>
+            <ul class="items animate" >
+            {% for image in images %}
+                {# thumbnail image.image carousel.size crop="center" as im #}
+                    {% thumbnail image.image carousel.full_size as full %}
+                        <li class="item image work">
+                            <div class="container">
+                                <img {% if image.title %} alt="{{ image.title }}" {% endif %} src="{{ full.url }}">
+                            </div>
+                            <div class="caption">
+                                <div class="title">
+                                    {{ image.title }}
+                                </div>
+                                <div class="description">
+                                    <p></p>
+                                </div>
+                                <div class="count">
+                                    {{ forloop.counter }} of {{ images.count }}
+                                </div>
+                            </div>
+                        </li>
+                    {% endthumbnail %}
+                {# endthumbnail #}
+            {% endfor %}
+            </ul> 
+        </div>
+    </div> 
+</section> 
