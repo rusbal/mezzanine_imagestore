@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-        name = 'imagestore',
+        name = 'mezzanine_imagestore',
         version = '2.7.7',
         packages = find_packages(),
         install_requires = [
